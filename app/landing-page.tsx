@@ -1,9 +1,32 @@
 "use client";
 // LP Mirelle J. Francisco — landing page
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "motion/react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence, type Variants } from "motion/react";
 import { ArrowRight, ArrowUpRight, Instagram, Menu, X } from "lucide-react";
+
+/*
+ * Animação padrão do site — estilo Webflow.
+ * Apenas ENTRADA ao rolar: fade + leve subida, uma única vez (once: true).
+ * Não há movimento de saída e os elementos não reanimam ao rolar de volta.
+ * Centralizado aqui para manter tudo coerente entre as seções.
+ */
+const EASE = [0.16, 1, 0.3, 1] as const;
+const REVEAL_RISE = 40;
+
+const reveal: Variants = {
+  hidden: { opacity: 0, y: REVEAL_RISE },
+  show: { opacity: 1, y: 0 },
+};
+
+/** Props padronizadas de entrada-no-scroll para qualquer motion.* */
+const revealProps = (delay = 0, duration = 0.8) => ({
+  variants: reveal,
+  initial: "hidden" as const,
+  whileInView: "show" as const,
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration, delay, ease: EASE },
+});
 
 const WHATSAPP_LINK = "https://wa.me/message/37XWRUDV5XBGD1";
 const INSTAGRAM_LINK = "https://www.instagram.com/psicologamirellejf/";
@@ -30,47 +53,34 @@ const WhatsAppIcon = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
+// Moldura de imagem com ENTRADA suave (fade + leve subida), sem parallax
+// contínuo nem efeito de saída ao rolar. Mantém apenas o zoom no hover.
 const ScrollImageFrame = ({
   src,
   alt,
   className = "",
   imageClassName = "",
   objectPosition = "50% 35%",
-  intensity = 1,
 }: {
   src: string;
   alt: string;
   className?: string;
   imageClassName?: string;
   objectPosition?: string;
+  /** Mantido por compatibilidade de chamada; não tem mais efeito. */
   intensity?: number;
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 92%", "end 8%"],
-  });
-  const smooth = useSpring(scrollYProgress, { stiffness: 110, damping: 24, mass: 0.35 });
-  const y = useTransform(smooth, [0, 1], [52 * intensity, -52 * intensity]);
-  const rotate = useTransform(smooth, [0, 0.5, 1], [-3 * intensity, 0, 3 * intensity]);
-  const scale = useTransform(smooth, [0, 0.5, 1], [0.94, 1.04, 0.96]);
-  const opacity = useTransform(smooth, [0, 0.16, 0.88, 1], [0.72, 1, 1, 0.78]);
-  const imageY = useTransform(smooth, [0, 1], ["-5%", "5%"]);
-  const imageScale = useTransform(smooth, [0, 1], [1.16, 1.04]);
-
   return (
     <motion.div
-      ref={ref}
-      style={{ y, rotate, scale, opacity }}
-      whileHover={{ scale: 1.045, rotate: 0 }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      {...revealProps(0, 0.9)}
+      whileHover={{ scale: 1.035 }}
       className={`group relative overflow-hidden rounded-md shadow-2xl ${className}`}
     >
-      <motion.img
+      <img
         src={src}
         alt={alt}
-        style={{ y: imageY, scale: imageScale, objectPosition }}
-        className={`h-[112%] w-full object-cover transition-[filter] duration-700 group-hover:contrast-105 ${imageClassName}`}
+        style={{ objectPosition }}
+        className={`h-full w-full object-cover transition-[filter,transform] duration-700 group-hover:scale-105 group-hover:contrast-105 ${imageClassName}`}
       />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.22),transparent_34%,rgba(109,23,22,0.1)_78%,transparent)] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
     </motion.div>
@@ -192,22 +202,12 @@ const Header = () => {
 };
 
 const Hero = () => {
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const heroImageY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
-  const heroImageScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
-  const heroCopyY = useTransform(scrollYProgress, [0, 1], [0, -110]);
-
   return (
-    <section ref={heroRef} id="inicio" className="relative min-h-[100svh] w-full overflow-hidden bg-nude">
+    <section id="inicio" className="relative min-h-[100svh] w-full overflow-hidden bg-nude">
       <div className="absolute inset-0 z-0 h-full w-full">
-        <motion.img
+        <img
           src="/images/mirelle-hero-spacious.png"
           alt="Mirelle J. Francisco em retrato editorial"
-          style={{ y: heroImageY, scale: heroImageScale }}
           className="h-full w-full object-cover object-[50%_0%]"
         />
       </div>
@@ -216,10 +216,9 @@ const Hero = () => {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[62%] bg-gradient-to-t from-offwhite/95 via-offwhite/55 to-transparent md:hidden" />
 
       <motion.div
-        initial={{ opacity: 0, x: 28 }}
-        animate={{ opacity: 1, x: 0 }}
-        style={{ y: heroCopyY }}
-        transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ opacity: 0, y: REVEAL_RISE }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.2, ease: EASE }}
         className="absolute right-[6vw] top-[46%] z-20 w-[min(31vw,32rem)] -translate-y-1/2 max-lg:right-8 max-lg:w-[min(36vw,28rem)] max-md:inset-x-6 max-md:bottom-10 max-md:top-auto max-md:w-auto max-md:translate-y-0"
       >
         <p className="mb-4 font-sans text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-wine">
@@ -294,10 +293,7 @@ const Manifesto = () => {
 
       <motion.div
         className="relative z-10 mx-auto grid max-w-7xl gap-12 md:grid-cols-12 md:items-end"
-        initial={{ opacity: 0, y: 90, scale: 0.96, rotate: -1.6 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
-        viewport={{ once: false, margin: "-120px", amount: 0.32 }}
-        transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
+        {...revealProps(0, 1)}
       >
         <div className="md:col-span-7">
           <p className="mb-8 font-sans text-xs font-semibold uppercase tracking-[0.3em] text-wine md:text-sm">
@@ -357,10 +353,7 @@ const EmotionalSection = () => {
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 md:grid-cols-12 md:gap-10">
         <div className="relative md:sticky md:top-24 md:col-span-5 md:min-h-[calc(100svh-6rem)] md:py-10">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            {...revealProps()}
             className="relative max-w-md overflow-hidden rounded-md bg-[linear-gradient(to_top,rgba(24,23,21,0.96),rgba(24,23,21,0.54),rgba(24,23,21,0.08)),url('/images/mirelle-portrait.webp')] bg-cover bg-[position:50%_8%] p-8 pt-72 shadow-2xl shadow-black/40 md:h-[calc(100svh-9rem)] md:min-h-[560px] md:max-w-none md:p-10 md:pt-[32vh]"
           >
             <p className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.22em] text-nude/55">
@@ -376,10 +369,7 @@ const EmotionalSection = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.96 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-120px" }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            {...revealProps(0, 0.9)}
             className="mt-10 max-w-sm md:hidden"
           >
             <div className="aspect-[4/5] overflow-hidden rounded-md bg-nude/10 shadow-2xl shadow-black/40">
@@ -397,11 +387,8 @@ const EmotionalSection = () => {
             <motion.div
               key={item.title}
               className="group border-t border-nude/20 py-8 md:min-h-[38vh]"
-              initial={{ opacity: 0, x: 130, y: 80, rotate: 4, scale: 0.94 }}
-              whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
-              whileHover={{ x: 22, scale: 1.02, rotate: -0.8 }}
-              viewport={{ once: false, amount: 0.34 }}
-              transition={{ duration: 0.85, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              {...revealProps(idx * 0.08)}
+              whileHover={{ x: 12, scale: 1.015 }}
             >
               <p className="mb-6 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-nude/35">
                 0{idx + 1}
@@ -416,6 +403,19 @@ const EmotionalSection = () => {
           ))}
         </div>
       </div>
+
+      <motion.div
+        {...revealProps(0.1, 0.75)}
+        className="-mx-6 mt-16 bg-wine py-10 md:-mx-12 md:mt-20 md:py-12 lg:-mx-24"
+      >
+        <div className="flex flex-col items-center gap-5 px-6">
+          <div className="h-px w-12 bg-nude/70" />
+          <p className="max-w-3xl text-center font-serif text-lg font-light leading-relaxed text-nude md:text-xl lg:text-[1.35rem]">
+            Uma escuta cuidadosa para reconhecer o que atravessa a vida e os
+            relacionamentos.
+          </p>
+        </div>
+      </motion.div>
     </section>
   );
 };
@@ -423,13 +423,7 @@ const PsychodramaSection = () => {
   return (
     <section className="bg-softblack px-6 py-28 text-nude md:px-12 md:py-40 lg:px-24">
       <div className="mx-auto grid max-w-7xl gap-14 md:grid-cols-12 md:items-center md:gap-16">
-        <motion.div
-          initial={{ opacity: 0, x: -90, y: 90, scale: 0.88, rotate: -5 }}
-          whileInView={{ opacity: 1, x: 0, y: 0, scale: 1, rotate: 0 }}
-          viewport={{ once: false, margin: "-120px", amount: 0.38 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="relative md:col-span-5"
-        >
+        <div className="relative md:col-span-5">
           <ScrollImageFrame
             src={SECTION_IMAGES.psychodrama}
             alt="Mirelle J. Francisco em dinâmica terapêutica"
@@ -437,46 +431,30 @@ const PsychodramaSection = () => {
             intensity={1.2}
             className="aspect-[4/5] bg-nude shadow-black/45"
           />
-        </motion.div>
+        </div>
 
         <div className="relative z-10 md:col-span-6 md:col-start-7">
           <motion.p
-            initial={{ opacity: 0, y: 28, x: 34 }}
-            whileInView={{ opacity: 1, y: 0, x: 0 }}
-            viewport={{ once: false, amount: 0.4 }}
-            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            {...revealProps(0, 0.75)}
             className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-nude/55"
           >
             Método terapêutico
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 70, x: 46, rotate: 1.4 }}
-            whileInView={{ opacity: 1, y: 0, x: 0, rotate: 0 }}
-            viewport={{ once: false, amount: 0.42 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            {...revealProps(0.06, 1)}
             className="max-w-2xl font-serif text-5xl leading-[0.95] tracking-normal md:text-7xl lg:text-[5.35rem]"
           >
             A força do <span className="font-light italic text-wine">Psicodrama</span>
           </motion.h2>
           <div className="my-8 h-px w-24 bg-wine/50" />
           <div className="max-w-2xl space-y-6 font-sans text-lg font-light leading-relaxed text-nude/78 md:text-xl">
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.2 }}
-            >
+            <motion.p {...revealProps(0.12, 1)}>
               O Psicodrama ajuda a dar forma ao que, muitas vezes, fica preso
               apenas no pensamento. Em vez de falar sobre a vida como algo distante,
               a terapia convida você a olhar para as cenas, vínculos e papéis que
               atravessam sua história.
             </motion.p>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.4 }}
-            >
+            <motion.p {...revealProps(0.18, 1)}>
               Com esse cuidado, torna-se possível reconhecer padrões, experimentar
               novas respostas e abrir espaço para relações mais espontâneas,
               conscientes e verdadeiras.
@@ -496,10 +474,7 @@ const CouplesTherapy = () => {
 
       <div className="relative z-10 mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, x: -90, y: 90, rotate: -2.4, scale: 0.95 }}
-          whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
-          viewport={{ once: false, amount: 0.34 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          {...revealProps(0, 1)}
           className="mb-16 border-b border-nude/25 pb-10 md:mb-24"
         >
           <p className="mb-6 font-sans text-xs font-semibold uppercase tracking-[0.3em] text-nude/70">
@@ -511,13 +486,7 @@ const CouplesTherapy = () => {
         </motion.div>
 
         <div className="grid gap-12 md:grid-cols-12 md:items-end">
-          <motion.div
-            initial={{ opacity: 0, x: -80, y: 90, scale: 0.9, rotate: -4 }}
-            whileInView={{ opacity: 1, x: 0, y: 0, scale: 1, rotate: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 1.05, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="relative mb-10 md:col-span-5 md:mb-0"
-          >
+          <div className="relative mb-10 md:col-span-5 md:mb-0">
             <ScrollImageFrame
               src={SECTION_IMAGES.couples}
               alt="Mirelle J. Francisco em retrato para terapia de casal"
@@ -531,13 +500,10 @@ const CouplesTherapy = () => {
                 <br />o caminho
               </span>
             </div>
-          </motion.div>
+          </div>
 
           <motion.div
-            initial={{ opacity: 0, x: 110, y: 60, rotate: 1.8 }}
-            whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
-            viewport={{ once: false, amount: 0.34 }}
-            transition={{ duration: 1, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+            {...revealProps(0.1, 1)}
             className="pb-12 md:col-span-6 md:col-start-7"
           >
             <div className="space-y-8 font-sans text-xl font-light leading-relaxed text-offwhite/90 md:text-2xl">
@@ -595,10 +561,7 @@ const CouplesProgram = () => {
     <section id="programa" className="bg-nude px-6 py-28 md:px-12 md:py-40 lg:px-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 90, scale: 0.94, rotate: -1.8 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
-          viewport={{ once: false, amount: 0.24 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          {...revealProps(0, 1)}
           className="grid overflow-hidden bg-offwhite md:grid-cols-12"
         >
           <div className="relative overflow-hidden bg-wine p-8 text-nude md:col-span-5 md:p-12 lg:p-16">
@@ -657,11 +620,8 @@ const CouplesProgram = () => {
               {pillars.map((pillar) => (
                 <motion.div
                   key={pillar.label}
-                  initial={{ opacity: 0, x: 110, y: 34, rotate: 1.2 }}
-                  whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
-                  whileHover={{ x: 18, scale: 1.015, backgroundColor: "rgba(109,23,22,0.055)" }}
-                  viewport={{ once: false, amount: 0.38 }}
-                  transition={{ duration: 0.78, ease: [0.16, 1, 0.3, 1] }}
+                  {...revealProps(0)}
+                  whileHover={{ x: 12, scale: 1.012, backgroundColor: "rgba(109,23,22,0.055)" }}
                   className="grid gap-5 border-b border-softblack/15 py-8 last:border-b-0 md:grid-cols-[7rem_1fr]"
                 >
                   <span className="font-serif text-5xl italic leading-none text-wine">
@@ -738,11 +698,8 @@ const Services = () => {
             <motion.div
               key={srv.name}
               className="group flex cursor-default flex-col gap-4 md:flex-row md:gap-12"
-              initial={{ opacity: 0, x: i % 2 === 0 ? -110 : 110, y: 34, rotate: i % 2 === 0 ? -2 : 2 }}
-              whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
-              whileHover={{ x: 18, scale: 1.018 }}
-              viewport={{ once: false, amount: 0.38 }}
-              transition={{ duration: 0.78, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+              {...revealProps(i * 0.06)}
+              whileHover={{ x: 12, scale: 1.015 }}
             >
               <div className="w-full border-t border-softblack/10 pt-4 transition-colors duration-500 group-hover:border-wine md:w-1/3">
                 <h4 className="font-sans text-lg font-medium text-softblack">
