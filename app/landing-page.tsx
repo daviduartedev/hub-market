@@ -73,7 +73,6 @@ const ScrollImageFrame = ({
   return (
     <motion.div
       {...revealProps(0, 0.9)}
-      whileHover={{ scale: 1.035 }}
       className={`group relative overflow-hidden rounded-md shadow-2xl ${className}`}
     >
       <img
@@ -203,80 +202,83 @@ const Header = () => {
 
 const Hero = () => {
   return (
-    <section id="inicio" className="relative min-h-[100svh] w-full overflow-hidden bg-nude">
-      <div className="absolute inset-0 z-0 h-full w-full">
-        <img
-          src="/images/mirelle-hero-spacious.png"
-          alt="Mirelle J. Francisco em retrato editorial"
-          className="h-full w-full object-cover object-[50%_0%]"
-        />
-      </div>
-
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-28 bg-gradient-to-t from-softblack/10 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[62%] bg-gradient-to-t from-offwhite/95 via-offwhite/55 to-transparent md:hidden" />
-
-      <motion.div
-        initial={{ opacity: 0, y: REVEAL_RISE }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.2, ease: EASE }}
-        className="absolute right-[6vw] top-[46%] z-20 w-[min(31vw,32rem)] -translate-y-1/2 max-lg:right-8 max-lg:w-[min(36vw,28rem)] max-md:inset-x-6 max-md:bottom-10 max-md:top-auto max-md:w-auto max-md:translate-y-0"
-      >
-        <p className="mb-4 font-sans text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-wine">
-          Mirelle J. Francisco • CRP 12/19485
-        </p>
-        <h1 className="hero-copy-shadow max-w-[11ch] font-serif text-[clamp(3rem,5.4vw,6.4rem)] leading-[0.9] tracking-normal text-softblack/95 max-lg:text-[clamp(2.6rem,4.6vw,5.2rem)] max-md:max-w-[10ch] max-md:text-[clamp(3rem,14vw,5.4rem)]">
-          Terapia para relações mais saudáveis.
-        </h1>
-        <p className="mt-5 max-w-md font-sans text-base font-light leading-relaxed text-softblack/78 md:text-lg">
-          Atendimento presencial em Laguna e online para adultos, casais, mulheres
-          e pessoas LGBT+.
-        </p>
-        <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <a
-            href={WHATSAPP_LINK}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center gap-3 rounded-full bg-wine px-7 py-4 font-sans text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-nude shadow-2xl shadow-wine/20 transition-all hover:-translate-y-0.5 hover:bg-softblack"
-          >
-            Agendar conversa
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
-          <span className="font-sans text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-softblack/55">
-            Presencial e online
-          </span>
+    <section
+      id="inicio"
+      className="relative min-h-[100svh] w-full overflow-hidden bg-offwhite md:bg-nude"
+    >
+      <div className="flex min-h-[100svh] flex-col md:contents">
+        <div className="relative h-[44svh] min-h-[240px] w-full shrink-0 md:absolute md:inset-0 md:h-full md:min-h-0">
+          <img
+            src="/images/mirelle-hero-spacious.png"
+            alt="Mirelle J. Francisco em retrato editorial"
+            className="h-full w-full object-cover object-[50%_18%] md:object-[50%_0%]"
+          />
         </div>
-      </motion.div>
 
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] hidden h-28 bg-gradient-to-t from-softblack/10 to-transparent md:block" />
+
+        <motion.div
+          initial={{ opacity: 0, y: REVEAL_RISE }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2, ease: EASE }}
+          className="relative z-20 -mt-5 flex flex-1 flex-col justify-end rounded-t-[1.75rem] bg-offwhite px-6 pb-24 pt-7 shadow-[0_-18px_36px_rgba(26,25,24,0.07)] md:absolute md:right-[6vw] md:top-[46%] md:mt-0 md:w-[min(31vw,32rem)] md:-translate-y-1/2 md:rounded-none md:bg-transparent md:px-0 md:pb-0 md:pt-0 md:shadow-none max-lg:md:right-8 max-lg:md:w-[min(36vw,28rem)]"
+        >
+          <p className="mb-3 font-sans text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-wine md:mb-4 md:text-[0.68rem]">
+            Mirelle J. Francisco • CRP 12/19485
+          </p>
+          <h1 className="max-w-[12ch] font-serif text-[clamp(2.35rem,10.5vw,3.4rem)] leading-[0.95] tracking-normal text-softblack/95 md:hero-copy-shadow md:max-w-[11ch] md:text-[clamp(3rem,5.4vw,6.4rem)] md:leading-[0.9] max-lg:md:text-[clamp(2.6rem,4.6vw,5.2rem)]">
+            Terapia para relações mais saudáveis.
+          </h1>
+          <p className="mt-4 max-w-md font-sans text-[0.95rem] font-light leading-relaxed text-softblack/78 md:mt-5 md:text-base lg:text-lg">
+            Atendimento presencial em Laguna e online para adultos, casais,
+            mulheres e pessoas LGBT+.
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center md:mt-7">
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-wine px-7 py-4 font-sans text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-nude shadow-2xl shadow-wine/20 transition-all hover:-translate-y-0.5 hover:bg-softblack sm:w-auto"
+            >
+              Agendar conversa
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+            <span className="text-center font-sans text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-softblack/55 sm:text-left md:text-[0.68rem]">
+              Presencial e online
+            </span>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 };
 
 const Marquee = () => {
   return (
-    <div className="flex overflow-hidden whitespace-nowrap border-y border-nude/20 bg-wine py-6">
+    <div className="flex overflow-hidden whitespace-nowrap border-y border-nude/20 bg-wine py-4 md:py-6">
       <motion.div
-        className="flex items-center gap-12"
+        className="flex items-center gap-8 md:gap-12"
         animate={{ x: ["0%", "-50%"] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       >
         {[...Array(4)].map((_, i) => (
           <React.Fragment key={i}>
-            <span className="font-serif text-3xl italic text-nude md:text-4xl">
+            <span className="font-serif text-2xl italic text-nude md:text-4xl">
               Psicodrama
             </span>
-            <span className="h-2 w-2 rounded-full bg-nude/50" />
-            <span className="font-sans text-sm uppercase tracking-[0.2em] text-nude md:text-base">
+            <span className="h-1.5 w-1.5 rounded-full bg-nude/50 md:h-2 md:w-2" />
+            <span className="font-sans text-xs uppercase tracking-[0.18em] text-nude md:text-base md:tracking-[0.2em]">
               Terapia de Casal
             </span>
-            <span className="h-2 w-2 rounded-full bg-nude/50" />
-            <span className="font-serif text-3xl italic text-nude md:text-4xl">
+            <span className="h-1.5 w-1.5 rounded-full bg-nude/50 md:h-2 md:w-2" />
+            <span className="font-serif text-2xl italic text-nude md:text-4xl">
               Atendimento Online e Presencial
             </span>
-            <span className="h-2 w-2 rounded-full bg-nude/50" />
-            <span className="font-sans text-sm uppercase tracking-[0.2em] text-nude md:text-base">
+            <span className="h-1.5 w-1.5 rounded-full bg-nude/50 md:h-2 md:w-2" />
+            <span className="font-sans text-xs uppercase tracking-[0.18em] text-nude md:text-base md:tracking-[0.2em]">
               CRP 12/19485
             </span>
-            <span className="h-2 w-2 rounded-full bg-nude/50" />
+            <span className="h-1.5 w-1.5 rounded-full bg-nude/50 md:h-2 md:w-2" />
           </React.Fragment>
         ))}
       </motion.div>
@@ -286,26 +288,26 @@ const Marquee = () => {
 
 const Manifesto = () => {
   return (
-    <section id="cuidado" className="relative overflow-hidden bg-nude px-6 py-28 md:px-12 md:py-40 lg:px-24">
+    <section id="cuidado" className="relative overflow-hidden bg-nude px-6 py-20 md:px-12 md:py-40 lg:px-24">
       <div className="pointer-events-none absolute -right-16 top-8 font-serif text-[18vw] leading-none text-wine/10">
         escuta
       </div>
 
       <motion.div
-        className="relative z-10 mx-auto grid max-w-7xl gap-12 md:grid-cols-12 md:items-end"
+        className="relative z-10 mx-auto grid max-w-7xl gap-10 md:grid-cols-12 md:items-end md:gap-12"
         {...revealProps(0, 1)}
       >
         <div className="md:col-span-7">
-          <p className="mb-8 font-sans text-xs font-semibold uppercase tracking-[0.3em] text-wine md:text-sm">
+          <p className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.3em] text-wine md:mb-8 md:text-sm">
             Quando a relação pede cuidado
           </p>
-          <h2 className="font-serif text-5xl leading-[0.95] tracking-normal text-softblack md:text-7xl lg:text-[6rem]">
+          <h2 className="font-serif text-[clamp(2.15rem,8.5vw,3rem)] leading-[1.02] tracking-normal text-softblack md:text-7xl md:leading-[0.95] lg:text-[6rem]">
             O problema não precisa virar crise para virar conversa.
           </h2>
         </div>
 
         <div className="md:col-span-5">
-          <p className="mb-8 font-sans text-xl font-light leading-relaxed text-softblack/75">
+          <p className="mb-6 font-sans text-lg font-light leading-relaxed text-softblack/75 md:mb-8 md:text-xl">
             Se as conversas terminam sempre no mesmo lugar, se o afastamento
             cresce em silêncio ou se os padrões se repetem apesar do amor, a
             terapia pode abrir um espaço seguro para compreender o que está
@@ -317,7 +319,7 @@ const Manifesto = () => {
             rel="noreferrer"
             whileHover={{ scale: 1.04, y: -6 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center justify-center gap-4 rounded-full bg-wine px-8 py-4 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-nude shadow-xl shadow-wine/15 transition-all duration-500 hover:bg-softblack"
+            className="inline-flex w-full items-center justify-center gap-4 rounded-full bg-wine px-8 py-4 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-nude shadow-xl shadow-wine/15 transition-all duration-500 hover:bg-softblack sm:w-auto"
           >
             Quero falar sobre meu relacionamento
             <ArrowUpRight className="h-4 w-4" />
@@ -349,30 +351,14 @@ const EmotionalSection = () => {
   ];
 
   return (
-    <section className="bg-softblack px-6 py-28 text-nude md:px-12 md:py-32 lg:px-24">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 md:grid-cols-12 md:gap-10">
+    <section className="bg-softblack px-6 py-20 text-nude md:px-12 md:py-32 lg:px-24">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-10 md:grid-cols-12 md:gap-10">
         <div className="relative md:sticky md:top-24 md:col-span-5 md:min-h-[calc(100svh-6rem)] md:py-10">
           <motion.div
-            {...revealProps()}
-            className="relative max-w-md overflow-hidden rounded-md bg-[linear-gradient(to_top,rgba(24,23,21,0.96),rgba(24,23,21,0.54),rgba(24,23,21,0.08)),url('/images/mirelle-portrait.webp')] bg-cover bg-[position:50%_8%] p-8 pt-72 shadow-2xl shadow-black/40 md:h-[calc(100svh-9rem)] md:min-h-[560px] md:max-w-none md:p-10 md:pt-[32vh]"
-          >
-            <p className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.22em] text-nude/55">
-              Temas que aparecem na clínica
-            </p>
-            <h2 className="font-serif text-5xl leading-[0.92] tracking-normal text-nude md:text-[3.55rem] lg:text-[4.1rem]">
-              O que pode chegar junto com você.
-            </h2>
-            <p className="mt-8 font-sans text-lg font-light leading-relaxed text-nude/70">
-              Uma escuta cuidadosa para reconhecer padrões, conflitos e pesos
-              emocionais que atravessam a vida e os relacionamentos.
-            </p>
-          </motion.div>
-
-          <motion.div
             {...revealProps(0, 0.9)}
-            className="mt-10 max-w-sm md:hidden"
+            className="mb-8 overflow-hidden rounded-md md:hidden"
           >
-            <div className="aspect-[4/5] overflow-hidden rounded-md bg-nude/10 shadow-2xl shadow-black/40">
+            <div className="aspect-[4/5] bg-nude/10 shadow-2xl shadow-black/40">
               <img
                 src="/images/mirelle-portrait.webp"
                 alt="Mirelle J. Francisco, psicóloga clínica"
@@ -380,23 +366,38 @@ const EmotionalSection = () => {
               />
             </div>
           </motion.div>
+
+          <motion.div
+            {...revealProps()}
+            className="relative max-w-md rounded-md border border-nude/10 bg-softblack p-6 shadow-2xl shadow-black/40 md:overflow-hidden md:border-0 md:bg-[linear-gradient(to_top,rgba(24,23,21,0.96),rgba(24,23,21,0.54),rgba(24,23,21,0.08)),url('/images/mirelle-portrait.webp')] md:bg-cover md:bg-[position:50%_8%] md:p-10 md:pt-[32vh] md:shadow-black/40 md:h-[calc(100svh-9rem)] md:min-h-[560px] md:max-w-none"
+          >
+            <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.22em] text-nude/55 md:mb-5">
+              Temas que aparecem na clínica
+            </p>
+            <h2 className="font-serif text-[clamp(2.15rem,8vw,2.75rem)] leading-[0.95] tracking-normal text-nude md:text-[3.55rem] md:leading-[0.92] lg:text-[4.1rem]">
+              O que pode chegar junto com você.
+            </h2>
+            <p className="mt-5 font-sans text-base font-light leading-relaxed text-nude/70 md:mt-8 md:text-lg">
+              Uma escuta cuidadosa para reconhecer padrões, conflitos e pesos
+              emocionais que atravessam a vida e os relacionamentos.
+            </p>
+          </motion.div>
         </div>
 
-        <div className="flex flex-col gap-10 md:col-span-6 md:col-start-7 md:py-[12vh]">
+        <div className="flex flex-col gap-6 md:col-span-6 md:col-start-7 md:gap-10 md:py-[12vh]">
           {items.map((item, idx) => (
             <motion.div
               key={item.title}
-              className="group border-t border-nude/20 py-8 md:min-h-[38vh]"
+              className="group border-t border-nude/20 py-6 transition-transform duration-500 md:min-h-[38vh] md:py-8 md:hover:translate-x-3"
               {...revealProps(idx * 0.08)}
-              whileHover={{ x: 12, scale: 1.015 }}
             >
-              <p className="mb-6 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-nude/35">
+              <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-nude/35 md:mb-6">
                 0{idx + 1}
               </p>
-              <h3 className="mb-6 font-serif text-4xl text-nude transition-colors duration-500 group-hover:text-[#E3D0C2] md:text-5xl lg:text-6xl">
+              <h3 className="mb-4 font-serif text-[clamp(1.85rem,7vw,2.35rem)] text-nude transition-colors duration-500 md:mb-6 md:text-5xl md:group-hover:text-[#E3D0C2] lg:text-6xl">
                 {item.title}
               </h3>
-              <p className="max-w-lg font-sans text-lg font-light leading-relaxed text-nude/75 md:text-xl">
+              <p className="max-w-lg font-sans text-base font-light leading-relaxed text-nude/75 md:text-lg lg:text-xl">
                 {item.desc}
               </p>
             </motion.div>
@@ -406,11 +407,11 @@ const EmotionalSection = () => {
 
       <motion.div
         {...revealProps(0.1, 0.75)}
-        className="-mx-6 mt-16 bg-wine py-10 md:-mx-12 md:mt-20 md:py-12 lg:-mx-24"
+        className="-mx-6 mt-12 bg-wine py-8 md:-mx-12 md:mt-20 md:py-12 lg:-mx-24"
       >
-        <div className="flex flex-col items-center gap-5 px-6">
+        <div className="flex flex-col items-center gap-4 px-6 md:gap-5">
           <div className="h-px w-12 bg-nude/70" />
-          <p className="max-w-3xl text-center font-serif text-lg font-light leading-relaxed text-nude md:text-xl lg:text-[1.35rem]">
+          <p className="max-w-3xl text-center font-serif text-base font-light leading-relaxed text-nude md:text-xl lg:text-[1.35rem]">
             Uma escuta cuidadosa para reconhecer o que atravessa a vida e os
             relacionamentos.
           </p>
@@ -421,8 +422,8 @@ const EmotionalSection = () => {
 };
 const PsychodramaSection = () => {
   return (
-    <section className="bg-softblack px-6 py-28 text-nude md:px-12 md:py-40 lg:px-24">
-      <div className="mx-auto grid max-w-7xl gap-14 md:grid-cols-12 md:items-center md:gap-16">
+    <section className="bg-softblack px-6 py-20 text-nude md:px-12 md:py-40 lg:px-24">
+      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-12 md:items-center md:gap-16">
         <div className="relative md:col-span-5">
           <ScrollImageFrame
             src={SECTION_IMAGES.psychodrama}
@@ -436,18 +437,18 @@ const PsychodramaSection = () => {
         <div className="relative z-10 md:col-span-6 md:col-start-7">
           <motion.p
             {...revealProps(0, 0.75)}
-            className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-nude/55"
+            className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-nude/55 md:mb-5"
           >
             Método terapêutico
           </motion.p>
           <motion.h2
             {...revealProps(0.06, 1)}
-            className="max-w-2xl font-serif text-5xl leading-[0.95] tracking-normal md:text-7xl lg:text-[5.35rem]"
+            className="max-w-2xl font-serif text-[clamp(2.25rem,8.5vw,3rem)] leading-[0.98] tracking-normal md:text-7xl md:leading-[0.95] lg:text-[5.35rem]"
           >
             A força do <span className="font-light italic text-wine">Psicodrama</span>
           </motion.h2>
-          <div className="my-8 h-px w-24 bg-wine/50" />
-          <div className="max-w-2xl space-y-6 font-sans text-lg font-light leading-relaxed text-nude/78 md:text-xl">
+          <div className="my-6 h-px w-20 bg-wine/50 md:my-8 md:w-24" />
+          <div className="max-w-2xl space-y-5 font-sans text-base font-light leading-relaxed text-nude/78 md:space-y-6 md:text-lg lg:text-xl">
             <motion.p {...revealProps(0.12, 1)}>
               O Psicodrama ajuda a dar forma ao que, muitas vezes, fica preso
               apenas no pensamento. Em vez de falar sobre a vida como algo distante,
@@ -467,7 +468,7 @@ const PsychodramaSection = () => {
 };
 const CouplesTherapy = () => {
   return (
-    <section id="terapia-casal" className="relative overflow-hidden bg-wine px-6 py-28 text-nude md:px-12 md:py-40 lg:px-24">
+    <section id="terapia-casal" className="relative overflow-hidden bg-wine px-6 py-20 text-nude md:px-12 md:py-40 lg:px-24">
       <div className="pointer-events-none absolute bottom-0 right-0 font-serif text-[22vw] leading-none text-nude/10">
         casal
       </div>
@@ -475,18 +476,18 @@ const CouplesTherapy = () => {
       <div className="relative z-10 mx-auto max-w-7xl">
         <motion.div
           {...revealProps(0, 1)}
-          className="mb-16 border-b border-nude/25 pb-10 md:mb-24"
+          className="mb-12 border-b border-nude/25 pb-8 md:mb-24 md:pb-10"
         >
-          <p className="mb-6 font-sans text-xs font-semibold uppercase tracking-[0.3em] text-nude/70">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.3em] text-nude/70 md:mb-6">
             Para casais que querem sair do ciclo
           </p>
-          <h2 className="max-w-5xl font-serif text-6xl leading-[0.9] tracking-normal md:text-[8rem] lg:text-[9rem]">
+          <h2 className="max-w-5xl font-serif text-[clamp(2.75rem,12vw,4.25rem)] leading-[0.92] tracking-normal md:text-[8rem] md:leading-[0.9] lg:text-[9rem]">
             Terapia de Casal
           </h2>
         </motion.div>
 
-        <div className="grid gap-12 md:grid-cols-12 md:items-end">
-          <div className="relative mb-10 md:col-span-5 md:mb-0">
+        <div className="grid gap-10 md:grid-cols-12 md:items-end md:gap-12">
+          <div className="relative mb-4 pb-10 md:col-span-5 md:mb-0 md:pb-0">
             <ScrollImageFrame
               src={SECTION_IMAGES.couples}
               alt="Mirelle J. Francisco em retrato para terapia de casal"
@@ -494,8 +495,8 @@ const CouplesTherapy = () => {
               intensity={1.35}
               className="aspect-[3/4] w-full bg-softblack shadow-black/40"
             />
-            <div className="absolute -bottom-5 -right-3 flex h-28 w-28 items-center justify-center rounded-full bg-nude p-4 text-center shadow-xl shadow-black/20 md:-bottom-8 md:-left-10 md:right-auto md:h-44 md:w-44">
-              <span className="font-serif text-base italic leading-tight text-wine md:text-xl">
+            <div className="absolute bottom-2 right-2 flex h-24 w-24 items-center justify-center rounded-full bg-nude p-3 text-center shadow-xl shadow-black/20 md:-bottom-8 md:-left-10 md:right-auto md:h-44 md:w-44 md:p-4">
+              <span className="font-serif text-sm italic leading-tight text-wine md:text-xl">
                 Reencontre
                 <br />o caminho
               </span>
@@ -504,9 +505,9 @@ const CouplesTherapy = () => {
 
           <motion.div
             {...revealProps(0.1, 1)}
-            className="pb-12 md:col-span-6 md:col-start-7"
+            className="pb-4 md:col-span-6 md:col-start-7 md:pb-12"
           >
-            <div className="space-y-8 font-sans text-xl font-light leading-relaxed text-offwhite/90 md:text-2xl">
+            <div className="space-y-6 font-sans text-lg font-light leading-relaxed text-offwhite/90 md:space-y-8 md:text-2xl">
               <p>
                 A relação amorosa é onde nossas maiores fragilidades encontram
                 palco. Quando a comunicação falha, o que resta é o ruído do
@@ -520,12 +521,12 @@ const CouplesTherapy = () => {
               </p>
             </div>
 
-            <div className="mt-16">
+            <div className="mt-10 md:mt-16">
               <a
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noreferrer"
-                className="group inline-flex items-center justify-center gap-4 rounded-full bg-nude px-8 py-4 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-wine transition-all hover:-translate-y-1 hover:bg-offwhite"
+                className="group inline-flex w-full items-center justify-center gap-4 rounded-full bg-nude px-8 py-4 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-wine transition-all hover:-translate-y-1 hover:bg-offwhite sm:w-auto"
               >
                 Conversar pelo WhatsApp
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
@@ -558,20 +559,20 @@ const CouplesProgram = () => {
   ];
 
   return (
-    <section id="programa" className="bg-nude px-6 py-28 md:px-12 md:py-40 lg:px-24">
+    <section id="programa" className="bg-nude px-6 py-20 md:px-12 md:py-40 lg:px-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           {...revealProps(0, 1)}
           className="grid overflow-hidden bg-offwhite md:grid-cols-12"
         >
-          <div className="relative overflow-hidden bg-wine p-8 text-nude md:col-span-5 md:p-12 lg:p-16">
-            <p className="mb-10 font-sans text-xs font-semibold uppercase tracking-[0.3em] text-nude/70">
+          <div className="relative overflow-hidden bg-wine p-6 text-nude sm:p-8 md:col-span-5 md:p-12 lg:p-16">
+            <p className="mb-6 font-sans text-xs font-semibold uppercase tracking-[0.3em] text-nude/70 md:mb-10">
               Programa de acompanhamento para casais
             </p>
-            <h2 className="mb-10 font-serif text-6xl leading-[0.9] md:text-8xl">
+            <h2 className="mb-6 font-serif text-[clamp(2.75rem,11vw,3.5rem)] leading-[0.92] md:mb-10 md:text-8xl md:leading-[0.9]">
               Entre Nós
             </h2>
-            <p className="mb-12 font-sans text-lg font-light leading-relaxed text-nude/80">
+            <p className="mb-8 font-sans text-base font-light leading-relaxed text-nude/80 md:mb-12 md:text-lg">
               Um percurso estruturado para casais que precisam de constância,
               profundidade e direção no processo terapêutico.
             </p>
@@ -581,7 +582,7 @@ const CouplesProgram = () => {
               rel="noreferrer"
               whileHover={{ scale: 1.04, y: -6 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center gap-4 rounded-full bg-nude px-8 py-4 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-wine transition-all hover:-translate-y-1 hover:bg-offwhite"
+              className="inline-flex w-full items-center justify-center gap-4 rounded-full bg-nude px-8 py-4 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-wine transition-all hover:-translate-y-1 hover:bg-offwhite sm:w-auto"
             >
               Quero entrar no programa
               <ArrowUpRight className="h-4 w-4" />
@@ -592,25 +593,25 @@ const CouplesProgram = () => {
               alt="Mirelle J. Francisco em espaço terapêutico"
               objectPosition="50% 42%"
               intensity={1.15}
-              className="mt-14 aspect-[4/5] bg-nude/10 shadow-black/30 sm:aspect-[4/3]"
+              className="mt-10 aspect-[4/5] bg-nude/10 shadow-black/30 sm:aspect-[4/3] md:mt-14"
             />
           </div>
 
-          <div className="p-8 md:col-span-7 md:p-12 lg:p-16">
-            <div className="mb-12 grid gap-6 md:grid-cols-2">
-              <div className="border-t border-softblack/20 pt-5">
-                <span className="font-serif text-5xl italic text-wine">
+          <div className="p-6 sm:p-8 md:col-span-7 md:p-12 lg:p-16">
+            <div className="mb-8 grid grid-cols-2 gap-5 md:mb-12 md:gap-6">
+              <div className="border-t border-softblack/20 pt-4 md:pt-5">
+                <span className="font-serif text-4xl italic text-wine md:text-5xl">
                   15
                 </span>
-                <p className="mt-2 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-softblack/60">
+                <p className="mt-2 font-sans text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-softblack/60 md:text-xs md:tracking-[0.18em]">
                   encontros previstos
                 </p>
               </div>
-              <div className="border-t border-softblack/20 pt-5">
-                <span className="font-serif text-5xl italic text-wine">
+              <div className="border-t border-softblack/20 pt-4 md:pt-5">
+                <span className="font-serif text-4xl italic text-wine md:text-5xl">
                   3 meses
                 </span>
-                <p className="mt-2 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-softblack/60">
+                <p className="mt-2 font-sans text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-softblack/60 md:text-xs md:tracking-[0.18em]">
                   cronograma indicado
                 </p>
               </div>
@@ -621,17 +622,16 @@ const CouplesProgram = () => {
                 <motion.div
                   key={pillar.label}
                   {...revealProps(0)}
-                  whileHover={{ x: 12, scale: 1.012, backgroundColor: "rgba(109,23,22,0.055)" }}
-                  className="grid gap-5 border-b border-softblack/15 py-8 last:border-b-0 md:grid-cols-[7rem_1fr]"
+                  className="grid gap-4 border-b border-softblack/15 py-6 transition-colors duration-500 last:border-b-0 md:grid-cols-[7rem_1fr] md:gap-5 md:py-8 md:hover:translate-x-3 md:hover:bg-[rgba(109,23,22,0.055)]"
                 >
-                  <span className="font-serif text-5xl italic leading-none text-wine">
+                  <span className="font-serif text-4xl italic leading-none text-wine md:text-5xl">
                     {pillar.label}
                   </span>
                   <div>
-                    <h3 className="mb-3 font-serif text-3xl text-softblack">
+                    <h3 className="mb-2 font-serif text-2xl text-softblack md:mb-3 md:text-3xl">
                       {pillar.title}
                     </h3>
-                    <p className="font-sans font-light leading-relaxed text-softblack/70">
+                    <p className="font-sans text-sm font-light leading-relaxed text-softblack/70 md:text-base">
                       {pillar.text}
                     </p>
                   </div>
@@ -681,10 +681,10 @@ const Services = () => {
   ];
 
   return (
-    <section id="servicos" className="bg-offwhite px-6 py-24 md:px-12 md:py-32 lg:px-24">
+    <section id="servicos" className="bg-offwhite px-6 py-20 md:px-12 md:py-32 lg:px-24">
       <div className="mx-auto max-w-5xl">
-        <div className="mb-16 flex flex-col items-end justify-between border-b border-softblack pb-8 md:flex-row">
-          <h2 className="mb-4 font-serif text-4xl text-softblack md:mb-0 md:text-6xl">
+        <div className="mb-12 flex flex-col items-start justify-between gap-4 border-b border-softblack pb-6 md:mb-16 md:flex-row md:items-end md:pb-8">
+          <h2 className="font-serif text-[clamp(2rem,7.5vw,2.75rem)] text-softblack md:text-6xl">
             Formatos{" "}
             <span className="italic text-wine">de Atendimento</span>
           </h2>
@@ -693,24 +693,23 @@ const Services = () => {
           </span>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-0 md:space-y-8">
           {services.map((srv, i) => (
             <motion.div
               key={srv.name}
-              className="group flex cursor-default flex-col gap-4 md:flex-row md:gap-12"
+              className="group flex cursor-default flex-col gap-2 border-t border-softblack/10 py-5 md:flex-row md:gap-12 md:py-0 md:pt-4"
               {...revealProps(i * 0.06)}
-              whileHover={{ x: 12, scale: 1.015 }}
             >
-              <div className="w-full border-t border-softblack/10 pt-4 transition-colors duration-500 group-hover:border-wine md:w-1/3">
-                <h4 className="font-sans text-lg font-medium text-softblack">
+              <div className="w-full transition-colors duration-500 md:w-1/3 md:group-hover:border-wine">
+                <h4 className="font-sans text-base font-medium text-softblack md:text-lg">
                   {srv.name}
                 </h4>
-                <span className="font-serif text-xl italic text-wine">
+                <span className="font-serif text-lg italic text-wine md:text-xl">
                   {srv.meta}
                 </span>
               </div>
-              <div className="w-full border-t border-transparent pt-0 md:w-2/3 md:border-softblack/10 md:pt-4">
-                <p className="font-sans font-light leading-relaxed text-softblack/70">
+              <div className="w-full md:w-2/3">
+                <p className="font-sans text-sm font-light leading-relaxed text-softblack/70 md:text-base">
                   {srv.desc}
                 </p>
               </div>
@@ -718,12 +717,12 @@ const Services = () => {
           ))}
         </div>
 
-        <div className="mt-16 flex justify-center">
+        <div className="mt-12 flex justify-center md:mt-16">
           <a
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center gap-4 rounded-full bg-wine px-10 py-5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-nude shadow-2xl shadow-wine/20 transition-all hover:-translate-y-1 hover:bg-softblack"
+            className="inline-flex w-full max-w-sm items-center justify-center gap-4 rounded-full bg-wine px-10 py-5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-nude shadow-2xl shadow-wine/20 transition-all hover:-translate-y-1 hover:bg-softblack sm:w-auto sm:max-w-none"
           >
             Tirar dúvidas pelo WhatsApp
             <ArrowUpRight className="h-4 w-4" />
@@ -736,8 +735,8 @@ const Services = () => {
 
 const About = () => {
   return (
-    <section id="sobre" className="relative overflow-hidden bg-nude px-6 py-24 md:px-12 md:py-32 lg:px-24">
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row">
+    <section id="sobre" className="relative overflow-hidden bg-nude px-6 py-20 md:px-12 md:py-32 lg:px-24">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-12 md:flex-row md:gap-16">
         <div className="order-2 w-full md:order-1 md:w-5/12">
           <motion.div
             initial={{ opacity: 0, x: -80, y: 90, scale: 0.9, rotate: -4 }}
@@ -745,7 +744,7 @@ const About = () => {
             whileHover={{ scale: 1.025, rotate: -1.2 }}
             viewport={{ once: false, amount: 0.32 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative"
+            className="relative max-md:mx-auto max-md:max-w-sm"
           >
             <div className="absolute -inset-3 -z-10 hidden rounded-[2rem] border border-wine/15 md:block" />
             <ScrollImageFrame
@@ -759,15 +758,15 @@ const About = () => {
         </div>
 
         <div className="order-1 w-full md:order-2 md:w-7/12">
-          <h2 className="mb-6 font-serif text-5xl leading-none text-softblack md:text-7xl">
+          <h2 className="mb-5 font-serif text-[clamp(2.5rem,9vw,3.25rem)] leading-none text-softblack md:mb-6 md:text-7xl">
             Mirelle J. <br />
             <span className="italic text-wine">Francisco</span>
           </h2>
-          <p className="mb-8 font-sans text-xs uppercase tracking-[0.2em] text-softblack">
+          <p className="mb-6 font-sans text-xs uppercase tracking-[0.2em] text-softblack md:mb-8">
             CRP 12/19485
           </p>
 
-          <div className="max-w-xl space-y-6 font-sans text-lg font-light text-softblack/80">
+          <div className="max-w-xl space-y-5 font-sans text-base font-light text-softblack/80 md:space-y-6 md:text-lg">
             <p>
               Especialista em Terapia de Casal e psicóloga clínica com atuação
               orientada pelo Psicodrama. Sua prática é focada na profundidade
@@ -788,19 +787,19 @@ const About = () => {
 
 const Location = () => {
   return (
-    <section id="localizacao" className="bg-offwhite px-6 py-20 md:px-12 md:py-28 lg:px-24">
-      <div className="mx-auto grid max-w-7xl gap-10 border-t border-softblack/10 pt-12 md:grid-cols-12 md:items-end">
+    <section id="localizacao" className="bg-offwhite px-6 py-16 md:px-12 md:py-28 lg:px-24">
+      <div className="mx-auto grid max-w-7xl gap-8 border-t border-softblack/10 pt-10 md:grid-cols-12 md:items-end md:gap-10 md:pt-12">
         <div className="md:col-span-5">
-          <p className="mb-5 font-sans text-xs font-medium uppercase tracking-[0.3em] text-wine">
+          <p className="mb-4 font-sans text-xs font-medium uppercase tracking-[0.3em] text-wine md:mb-5">
             Atendimento presencial em Laguna
           </p>
-          <h2 className="font-serif text-5xl leading-none text-softblack md:text-7xl">
+          <h2 className="font-serif text-[clamp(2.25rem,8vw,3rem)] leading-none text-softblack md:text-7xl">
             Localização
           </h2>
         </div>
 
         <div className="md:col-span-3">
-          <address className="font-sans text-base font-light not-italic leading-relaxed text-softblack/75">
+          <address className="font-sans text-sm font-light not-italic leading-relaxed text-softblack/75 md:text-base">
             Mirelle J. Francisco - Psicóloga Clínica
             <br />
             CRP 12/19485
@@ -836,22 +835,22 @@ const Location = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-softblack px-6 pb-12 pt-32 text-offwhite md:px-12 lg:px-24">
-      <div className="mx-auto mb-24 flex max-w-7xl flex-col items-center text-center">
-        <h2 className="mb-12 font-serif text-5xl md:text-7xl lg:text-8xl">
+    <footer className="bg-softblack px-6 pb-10 pt-20 text-offwhite md:px-12 md:pb-12 md:pt-32 lg:px-24">
+      <div className="mx-auto mb-16 flex max-w-7xl flex-col items-center text-center md:mb-24">
+        <h2 className="mb-8 font-serif text-[clamp(2.35rem,9vw,3rem)] md:mb-12 md:text-7xl lg:text-8xl">
           Vamos <span className="italic text-wine">conversar?</span>
         </h2>
         <a
           href={WHATSAPP_LINK}
           target="_blank"
           rel="noreferrer"
-          className="rounded-full bg-offwhite px-12 py-5 font-sans text-sm font-semibold uppercase tracking-[0.18em] text-softblack shadow-xl transition-all duration-500 hover:-translate-y-1 hover:bg-wine hover:text-offwhite"
+          className="w-full max-w-xs rounded-full bg-offwhite px-10 py-5 font-sans text-sm font-semibold uppercase tracking-[0.18em] text-softblack shadow-xl transition-all duration-500 hover:-translate-y-1 hover:bg-wine hover:text-offwhite sm:w-auto sm:max-w-none sm:px-12"
         >
           Agendar pelo WhatsApp
         </a>
       </div>
 
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 border-t border-offwhite/20 pt-12 md:grid-cols-3">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 border-t border-offwhite/20 pt-10 md:grid-cols-3 md:gap-12 md:pt-12">
         <div>
           <p className="mb-4 font-serif text-2xl italic">Contato</p>
           <ul className="space-y-2 font-sans text-sm font-light opacity-80">
@@ -928,9 +927,9 @@ const FloatingWhatsApp = () => {
       target="_blank"
       rel="noreferrer"
       aria-label="Chamar Mirelle no WhatsApp"
-      className="fixed bottom-5 right-5 z-50 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl shadow-softblack/30 ring-4 ring-white/80 transition-all hover:-translate-y-1 hover:bg-[#1DA851] md:h-20 md:w-20"
+      className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl shadow-softblack/30 ring-4 ring-white/80 transition-all hover:-translate-y-1 hover:bg-[#1DA851] md:bottom-5 md:right-5 md:h-20 md:w-20"
     >
-      <WhatsAppIcon className="h-9 w-9 md:h-11 md:w-11" />
+      <WhatsAppIcon className="h-8 w-8 md:h-11 md:w-11" />
     </a>
   );
 };
