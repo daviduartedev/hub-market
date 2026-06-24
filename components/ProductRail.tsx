@@ -3,7 +3,7 @@ import { featuredProducts } from "@/data/products";
 
 export function ProductRail() {
   return (
-    <section id="ofertas" className="bg-[#F6F7F9] px-4 py-10 sm:px-6 lg:px-8">
+    <section id="ofertas" className="bg-[#E7EAEE] px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl overflow-hidden border border-[#D8DDE6] bg-white">
         <div className="flex flex-col gap-3 border-b border-[#D8DDE6] bg-[#111111] px-5 py-6 text-white sm:flex-row sm:items-end sm:justify-between lg:px-7">
           <div>

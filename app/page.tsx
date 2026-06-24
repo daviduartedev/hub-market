@@ -2,6 +2,7 @@ import { AffiliateNotice } from "@/components/AffiliateNotice";
 import { CategorySection } from "@/components/CategorySection";
 import { FeaturedRadarOffer } from "@/components/FeaturedRadarOffer";
 import { Footer } from "@/components/Footer";
+import { FloatingWhatsapp } from "@/components/FloatingWhatsapp";
 import { Header } from "@/components/Header";
 import { HeroRadar } from "@/components/HeroRadar";
 import { MostViewed } from "@/components/MostViewed";
@@ -12,7 +13,7 @@ import { WhatsappCTA } from "@/components/WhatsappCTA";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#F6F7F9] font-sans text-[#111111]">
+    <main className="min-h-screen bg-[#E7EAEE] font-sans text-[#111111]">
       <TopRadarBar />
       <Header />
       <HeroRadar />
@@ -24,6 +25,7 @@ export default function Home() {
       <MostViewed />
       <AffiliateNotice />
       <Footer />
+      <FloatingWhatsapp />
     </main>
   );
 }

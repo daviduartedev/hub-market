@@ -11,7 +11,7 @@ export function FeaturedRadarOffer() {
   const product = products[1];
 
   return (
-    <section className="bg-white px-4 py-10 sm:px-6 lg:px-8">
+    <section className="bg-[#DDE3E8] px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-7xl overflow-hidden border-y border-[#D8DDE6] bg-[#111111] text-white shadow-[0_18px_45px_rgba(17,17,17,0.08)] lg:grid-cols-[1.08fr_0.92fr]">
         <div className="relative min-h-80 bg-[#111111]">
           <img

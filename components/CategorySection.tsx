@@ -2,7 +2,7 @@ import { categories } from "@/data/categories";
 
 export function CategorySection() {
   return (
-    <section id="categorias" className="bg-[#F6F7F9] px-4 py-10 sm:px-6 lg:px-8">
+    <section id="categorias" className="bg-[#DDE3E8] px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mb-5">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-[#E11D2E]">

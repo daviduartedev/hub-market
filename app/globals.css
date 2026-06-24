@@ -6,7 +6,7 @@
 }
 
 :root {
-  --background: #f6f7f9;
+  --background: #e7eaee;
   --foreground: #111111;
 }
 
@@ -54,4 +54,22 @@ img {
   to {
     width: 100%;
   }
+}
+
+@keyframes radar-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.radar-marquee {
+  animation: radar-marquee 32s linear infinite;
+}
+
+.radar-marquee:hover {
+  animation-play-state: paused;
 }
