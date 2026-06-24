@@ -12,7 +12,7 @@ export function CategorySection() {
             O Radar filtra por interesse
           </h2>
         </div>
-        <div className="flex snap-x gap-3 overflow-x-auto pb-2 [-webkit-overflow-scrolling:touch] lg:grid lg:grid-cols-6 lg:overflow-visible">
+        <div className="no-scrollbar flex snap-x gap-3 overflow-x-auto [-webkit-overflow-scrolling:touch] lg:grid lg:grid-cols-6 lg:overflow-visible">
           {categories.map((category) => (
             <a
               key={category.label}

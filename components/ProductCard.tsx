@@ -83,10 +83,10 @@ export function ProductCard({ product, compact = false }: ProductCardProps) {
               href={product.affiliateUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex flex-1 items-center justify-center gap-2 rounded-md bg-[#E11D2E] px-4 py-3 text-sm font-black text-white outline-none transition-colors hover:bg-[#B91C1C] focus-visible:ring-2 focus-visible:ring-[#E11D2E] focus-visible:ring-offset-2"
+              className="inline-flex h-12 min-w-0 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-[#E11D2E] px-3 text-xs font-black leading-none text-white outline-none transition-colors hover:bg-[#B91C1C] focus-visible:ring-2 focus-visible:ring-[#E11D2E] focus-visible:ring-offset-2 sm:text-sm"
             >
               {compact ? "Abrir" : marketplaceCtaLabels[product.marketplace]}
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
             </a>
             <a
               href={product.affiliateUrl}

@@ -12,17 +12,14 @@ const moneyFormatter = new Intl.NumberFormat("pt-BR", {
 
 const slideCopy = [
   {
-    eyebrow: "Oferta abrindo a vitrine",
     title: "Tecnologia útil com preço para decidir rápido.",
     text: "Uma seleção rotativa no ritmo de marketplace: imagem grande, preço claro e origem visível antes do clique.",
   },
   {
-    eyebrow: "Mais procurado agora",
     title: "Achados para trabalho, casa e rotina conectada.",
     text: "O Radar troca o destaque automaticamente para você ver oportunidades diferentes sem garimpar.",
   },
   {
-    eyebrow: "Curadoria em movimento",
     title: "A vitrine muda, o critério continua.",
     text: "Ofertas passam pelo Radar com preço de referência, categoria e aviso comercial sempre por perto.",
   },
@@ -67,9 +64,6 @@ export function HeroRadar() {
 
         <div className="relative grid min-h-[620px] gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_25rem] lg:px-8 lg:py-16 xl:px-12">
           <div className="flex max-w-4xl flex-col justify-center">
-            <span className="inline-flex w-fit rounded-md bg-[#FFB703] px-3 py-1.5 text-xs font-black uppercase tracking-[0.18em] text-[#111111]">
-              {slide.eyebrow}
-            </span>
             <h1 className="mt-5 max-w-4xl font-display text-[3rem] font-black leading-[0.95] tracking-tight sm:text-[4.75rem] lg:text-[6rem]">
               {slide.title}
             </h1>

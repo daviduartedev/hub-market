@@ -1,7 +1,12 @@
 import { ProductCard } from "@/components/ProductCard";
 import { mostViewedProducts } from "@/data/products";
 
-const marqueeProducts = [...mostViewedProducts, ...mostViewedProducts];
+const marqueeProducts = [
+  ...mostViewedProducts,
+  ...mostViewedProducts,
+  ...mostViewedProducts,
+  ...mostViewedProducts,
+];
 
 export function MostViewed() {
   return (

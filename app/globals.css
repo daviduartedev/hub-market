@@ -57,9 +57,17 @@ img {
 }
 
 .radar-marquee {
-  animation: radar-marquee 32s linear infinite;
+  animation: radar-marquee 44s linear infinite;
 }
 
 .radar-marquee:hover {
   animation-play-state: paused;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

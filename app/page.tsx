@@ -5,6 +5,7 @@ import { FloatingWhatsapp } from "@/components/FloatingWhatsapp";
 import { Header } from "@/components/Header";
 import { HeroRadar } from "@/components/HeroRadar";
 import { MostViewed } from "@/components/MostViewed";
+import { NewsletterPopup } from "@/components/NewsletterPopup";
 import { ProductRail } from "@/components/ProductRail";
 import { TopRadarBar } from "@/components/TopRadarBar";
 import { TrustStrip } from "@/components/TrustStrip";
@@ -24,6 +25,7 @@ export default function Home() {
       <MostViewed />
       <Footer />
       <FloatingWhatsapp />
+      <NewsletterPopup />
     </main>
   );
 }
