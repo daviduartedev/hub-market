@@ -56,9 +56,6 @@ export function Header() {
             <span className="block font-display text-3xl font-black leading-none tracking-tight">
               Radar
             </span>
-            <span className="hidden text-[11px] font-black uppercase tracking-[0.16em] text-[#FFB703] sm:block">
-              hub market
-            </span>
           </span>
         </a>
 

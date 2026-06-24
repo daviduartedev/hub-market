@@ -16,10 +16,6 @@ export function MostViewed() {
               Esteira de ofertas que o público abriu mais
             </h2>
           </div>
-          <p className="max-w-md text-sm font-semibold leading-6 text-white/70">
-            Uma faixa contínua, sem espaçamentos laterais, para navegar como
-            prateleira de marketplace.
-          </p>
         </div>
       </div>
 

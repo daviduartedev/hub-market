@@ -46,16 +46,6 @@ img {
   }
 }
 
-@keyframes carousel-progress {
-  from {
-    width: 0%;
-  }
-
-  to {
-    width: 100%;
-  }
-}
-
 @keyframes radar-marquee {
   from {
     transform: translateX(0);

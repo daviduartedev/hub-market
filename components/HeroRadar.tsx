@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, ExternalLink, MessageCircle } from "lucide-react";
+import { ExternalLink, MessageCircle } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { marketplaceLabels } from "@/components/marketplace";
 import { products } from "@/data/products";
@@ -19,7 +19,7 @@ const slideCopy = [
   {
     eyebrow: "Mais procurado agora",
     title: "Achados para trabalho, casa e rotina conectada.",
-    text: "O Hub Market troca o destaque automaticamente para você ver oportunidades diferentes sem garimpar.",
+    text: "O Radar troca o destaque automaticamente para você ver oportunidades diferentes sem garimpar.",
   },
   {
     eyebrow: "Curadoria em movimento",
@@ -49,10 +49,6 @@ export function HeroRadar() {
 
   const slide = slides[activeSlide];
   const product = slide.product;
-
-  function goToSlide(index: number) {
-    setActiveSlide((index + slides.length) % slides.length);
-  }
 
   return (
     <section id="inicio" className="overflow-hidden bg-[#101010] text-white">
@@ -140,47 +136,6 @@ export function HeroRadar() {
               </p>
             </div>
           </aside>
-
-          <div className="absolute bottom-5 left-4 right-4 flex items-center justify-between gap-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 xl:left-12 xl:right-12">
-            <div className="flex gap-2">
-              {slides.map(({ product: item }, index) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => goToSlide(index)}
-                  aria-label={`Ver oferta ${index + 1}`}
-                  className={`h-2.5 rounded-full transition-all ${
-                    index === activeSlide
-                      ? "w-10 bg-[#FFB703]"
-                      : "w-2.5 bg-white/45 hover:bg-white"
-                  }`}
-                />
-              ))}
-            </div>
-            <div className="hidden gap-2 sm:flex">
-              <button
-                type="button"
-                onClick={() => goToSlide(activeSlide - 1)}
-                aria-label="Oferta anterior"
-                className="grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-white/10 text-white outline-none transition-colors hover:bg-white hover:text-[#111111] focus-visible:ring-2 focus-visible:ring-white"
-              >
-                <ArrowLeft className="h-5 w-5" aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                onClick={() => goToSlide(activeSlide + 1)}
-                aria-label="Próxima oferta"
-                className="grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-white/10 text-white outline-none transition-colors hover:bg-white hover:text-[#111111] focus-visible:ring-2 focus-visible:ring-white"
-              >
-                <ArrowRight className="h-5 w-5" aria-hidden="true" />
-              </button>
-            </div>
-            <div
-              key={activeSlide}
-              className="absolute -bottom-5 left-0 h-1 bg-[#25D366]"
-              style={{ animation: "carousel-progress 10s linear forwards" }}
-            />
-          </div>
         </div>
       </div>
     </section>

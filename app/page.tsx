@@ -1,4 +1,3 @@
-import { AffiliateNotice } from "@/components/AffiliateNotice";
 import { CategorySection } from "@/components/CategorySection";
 import { FeaturedRadarOffer } from "@/components/FeaturedRadarOffer";
 import { Footer } from "@/components/Footer";
@@ -23,7 +22,6 @@ export default function Home() {
       <WhatsappCTA />
       <CategorySection />
       <MostViewed />
-      <AffiliateNotice />
       <Footer />
       <FloatingWhatsapp />
     </main>

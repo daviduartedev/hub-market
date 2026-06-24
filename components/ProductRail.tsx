@@ -14,10 +14,6 @@ export function ProductRail() {
               Achados monitorados hoje
             </h2>
           </div>
-          <p className="max-w-md text-sm font-semibold leading-6 text-white/65">
-            Amazon e Mercado Livre em uma prateleira curta, com preço, origem e
-            aviso comercial à vista.
-          </p>
         </div>
 
         <div className="grid sm:grid-cols-2 xl:grid-cols-4">

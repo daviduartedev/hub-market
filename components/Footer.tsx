@@ -6,9 +6,6 @@ export function Footer() {
           <p className="font-display text-4xl font-black leading-none tracking-tight">
             Radar
           </p>
-          <p className="mt-2 text-xs font-black uppercase tracking-[0.22em] text-[#FFB703]">
-            hub market
-          </p>
           <p className="mt-6 max-w-xl text-base font-semibold leading-7 text-white/68">
             Uma vitrine editorial para ofertas úteis, com origem visível,
             aviso comercial claro e navegação pensada para abrir a loja certa
@@ -42,9 +39,6 @@ export function Footer() {
               Transparência
             </p>
             <nav className="mt-4 grid gap-3 text-sm font-bold text-white/62">
-              <a href="#aviso-afiliado" className="hover:text-[#FFB703]">
-                Como usamos links
-              </a>
               <a href="#whatsapp" className="hover:text-[#FFB703]">
                 Grupo do WhatsApp
               </a>
@@ -77,7 +71,7 @@ export function Footer() {
       </div>
 
       <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-white/10 pt-5 text-xs font-bold text-white/45 sm:flex-row sm:items-center sm:justify-between">
-        <p>Radar Hub Market. Ofertas organizadas para comparação rápida.</p>
+        <p>Radar. Ofertas organizadas para comparação rápida.</p>
         <p>Links, preços e disponibilidade podem mudar nas lojas parceiras.</p>
       </div>
     </footer>
