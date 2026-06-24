@@ -3,37 +3,17 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://mirellejfpsi.com.br",
+    process.env.NEXT_PUBLIC_SITE_URL || "https://radardeofertas.local",
   ),
-  title: "Mirelle J. Francisco | Psicóloga Clínica em Laguna",
+  title: "Radar | Ofertas selecionadas da Amazon e Mercado Livre",
   description:
-    "Psicóloga clínica especialista em Terapia de Casal. Atendimento presencial em Laguna, SC, e online para adultos e casais.",
-  keywords: [
-    "Mirelle J. Francisco",
-    "psicóloga em Laguna",
-    "psicóloga clínica Laguna",
-    "terapia de casal Laguna",
-    "psicodrama",
-    "CRP 12/19485",
-  ],
+    "Se é promoção, passa pelo Radar. Vitrine curada de ofertas com links afiliados para Amazon e Mercado Livre.",
   openGraph: {
-    title: "Mirelle J. Francisco | Psicóloga Clínica em Laguna",
+    title: "Radar | Se é promoção, passa pelo Radar",
     description:
-      "Atendimento presencial em Laguna, SC, e online. Psicóloga clínica especialista em Terapia de Casal.",
+      "Produtos úteis monitorados em uma vitrine simples, direta e curada.",
     type: "website",
     locale: "pt_BR",
-    images: [
-      {
-        url: "/images/mirelle-hero-horizontal.webp",
-        width: 2400,
-        height: 1350,
-        alt: "Mirelle J. Francisco Psicóloga Clínica",
-      },
-    ],
-  },
-  icons: {
-    icon: "/brand/logo-wine.png",
-    apple: "/brand/logo-wine.png",
   },
 };
 

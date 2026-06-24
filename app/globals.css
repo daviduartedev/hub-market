@@ -1,105 +1,57 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Higuen Serif";
-  src: url("/fonts/higuen-serif.otf") format("opentype");
-  font-display: swap;
-  font-style: normal;
-  font-weight: 300 700;
-}
-
-@font-face {
-  font-family: "Sacramento Local";
-  src: url("/fonts/sacramento.ttf") format("truetype");
-  font-display: swap;
-  font-style: normal;
-  font-weight: 400;
-}
-
 @theme {
-  --breakpoint-xs: 25rem;
-
-  --color-wine: #6d1716;
-  --color-nude: #e3d0c2;
-  --color-offwhite: #f5f2ef;
-  --color-softblack: #1a1918;
-
-  --font-serif: "Higuen Serif", "Cormorant SC", serif;
-  --font-display: "Cormorant SC", serif;
-  --font-sans: "Inter", sans-serif;
-  --font-hand: "Sacramento Local", cursive;
+  --font-display: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-sans: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 :root {
-  --background: #f5f2ef;
-  --foreground: #1a1918;
+  --background: #f6f7f9;
+  --foreground: #111111;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 10rem;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
-h1,
-h2,
-h3 {
-  font-family: var(--font-serif);
-  font-weight: 400;
+img {
+  max-width: 100%;
 }
 
-@keyframes spin-slow {
+::selection {
+  background: #ffb703;
+  color: #18181b;
+}
+
+:focus-visible {
+  outline: none;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 8rem;
+  }
+}
+
+@keyframes carousel-progress {
   from {
-    transform: rotate(0deg);
+    width: 0%;
   }
 
   to {
-    transform: rotate(360deg);
+    width: 100%;
   }
-}
-
-.spin-slow {
-  animation: spin-slow 18s linear infinite;
-}
-
-.hero-copy-shadow {
-  text-shadow:
-    0 1px 0 rgba(245, 242, 239, 0.6),
-    0 16px 34px rgba(245, 242, 239, 0.7),
-    0 1px 16px rgba(26, 25, 24, 0.12);
-}
-
-@keyframes hero-text-shine {
-  from {
-    background-position: 140% 50%;
-  }
-
-  to {
-    background-position: -40% 50%;
-  }
-}
-
-.hero-shine-text {
-  background-image: linear-gradient(
-    100deg,
-    #6d1716 0%,
-    #6d1716 34%,
-    #b65a4f 47%,
-    #f5d8c8 50%,
-    #8a2420 56%,
-    #6d1716 70%,
-    #6d1716 100%
-  );
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: hero-text-shine 3.5s ease-in-out infinite;
 }

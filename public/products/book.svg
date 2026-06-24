@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title">
+  <title id="title">Livro de negocios</title>
+  <rect width="640" height="420" fill="#F6F7F9"/>
+  <rect x="42" y="40" width="556" height="340" rx="16" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="4"/>
+  <path d="M182 102h152c26 0 48 22 48 48v184H230c-26 0-48-22-48-48z" fill="#18181B"/>
+  <path d="M382 150c0-26 22-48 48-48h28v232h-76z" fill="#E11D2E"/>
+  <path d="M228 164h94M228 206h82M228 248h104" stroke="#FFB703" stroke-width="12" stroke-linecap="round"/>
+  <rect x="466" y="102" width="22" height="232" fill="#FFB703"/>
+  <text x="64" y="332" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#18181B">LIVRO</text>
+</svg>

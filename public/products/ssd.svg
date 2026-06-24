@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title">
+  <title id="title">SSD externo</title>
+  <rect width="640" height="420" fill="#F6F7F9"/>
+  <rect x="42" y="40" width="556" height="340" rx="16" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="4"/>
+  <rect x="214" y="84" width="212" height="250" rx="28" fill="#18181B"/>
+  <rect x="246" y="120" width="148" height="72" rx="10" fill="#E11D2E"/>
+  <path d="M260 226h120M260 262h80" stroke="#FFB703" stroke-width="14" stroke-linecap="round"/>
+  <rect x="292" y="310" width="56" height="12" rx="6" fill="#E5E7EB"/>
+  <text x="64" y="332" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#18181B">SSD</text>
+</svg>

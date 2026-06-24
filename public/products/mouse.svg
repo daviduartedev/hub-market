@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title">
+  <title id="title">Mouse ergonomico</title>
+  <rect width="640" height="420" fill="#F6F7F9"/>
+  <rect x="38" y="38" width="564" height="344" rx="16" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="4"/>
+  <rect x="220" y="82" width="200" height="260" rx="92" fill="#18181B"/>
+  <path d="M320 90v112" stroke="#FFB703" stroke-width="10" stroke-linecap="round"/>
+  <rect x="300" y="110" width="40" height="66" rx="20" fill="#E11D2E"/>
+  <circle cx="146" cy="122" r="28" fill="#FFB703"/>
+  <rect x="470" y="286" width="78" height="18" rx="9" fill="#E11D2E"/>
+  <text x="64" y="332" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#18181B">MOUSE</text>
+</svg>

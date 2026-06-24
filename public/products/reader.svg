@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title">
+  <title id="title">Leitor digital</title>
+  <rect width="640" height="420" fill="#F6F7F9"/>
+  <rect x="42" y="40" width="556" height="340" rx="16" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="4"/>
+  <rect x="220" y="70" width="200" height="280" rx="18" fill="#18181B"/>
+  <rect x="242" y="98" width="156" height="210" rx="6" fill="#F6F7F9"/>
+  <path d="M268 142h104M268 178h86M268 214h112M268 250h74" stroke="#555555" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="320" cy="330" r="8" fill="#FFB703"/>
+  <rect x="76" y="98" width="78" height="18" rx="9" fill="#E11D2E"/>
+  <text x="64" y="332" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#18181B">LEITOR</text>
+</svg>
